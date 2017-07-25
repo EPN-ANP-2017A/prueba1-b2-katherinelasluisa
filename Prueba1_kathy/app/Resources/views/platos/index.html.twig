@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Platos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Disponible</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for plato in platos %}
+            <tr>
+                <td><a href="{{ path('platos_show', { 'id': plato.id }) }}">{{ plato.id }}</a></td>
+                <td>{{ plato.nombre }}</td>
+                <td>{{ plato.precio }}</td>
+                <td>{% if plato.disponible %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('platos_show', { 'id': plato.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('platos_edit', { 'id': plato.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('platos_new') }}">Create a new plato</a>
+        </li>
+    </ul>
+{% endblock %}

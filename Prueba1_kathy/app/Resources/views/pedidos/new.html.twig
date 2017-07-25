@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+<div class="main container">
+    <div class="row well">
+        <div class="cold-md-6">
+            <div class="page-header">
+                    <h1>Pedido creation</h1>
+                </div>
+
+    {{ form_start(form, {'attr' : {'role' : 'form'}}) }}
+
+            <div class="form-group">
+                {{ form_label(form.cantidad) }}
+                {{ form_widget(form.cantidad, { 'attr' : {'class' : 'form-control', 'placeholder' : 'Your cantidad'} }) }}
+                <span class="text-danger">{{ form_errors(form.cantidad) }}</span>
+
+            </div>
+
+
+
+            <input type="submit" value="Create" />
+            {{ form_end(form) }}
+
+            <ul>
+                <li>
+                    <a href="{{ path('pedidos_index') }}">Back to the list</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Plato</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ plato.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ plato.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Precio</th>
+                <td>{{ plato.precio }}</td>
+            </tr>
+            <tr>
+                <th>Disponible</th>
+                <td>{% if plato.disponible %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('platos_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('platos_edit', { 'id': plato.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
